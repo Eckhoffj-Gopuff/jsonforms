@@ -23,22 +23,17 @@
   THE SOFTWARE.
 */
 import React from 'react';
-import {
-  showAsRequired,
-  ControlProps,
-  isDescriptionHidden,
-} from '@jsonforms/core';
+import { showAsRequired, ControlProps } from '@jsonforms/core';
 
 import { InputLabel, FormControl, FormHelperText } from '@mui/material';
 import merge from 'lodash/merge';
-import { useFocus, useInputVariant } from '../util';
+import { useInputVariant } from '../util';
 
 export interface WithInput {
   input: any;
 }
 
 export const MaterialInputControl = (props: ControlProps & WithInput) => {
-  const [focused, onFocus, onBlur] = useFocus();
   const {
     id,
     description,
@@ -53,20 +48,6 @@ export const MaterialInputControl = (props: ControlProps & WithInput) => {
   const variant = useInputVariant();
   const isValid = errors.length === 0;
   const appliedUiSchemaOptions = merge({}, config, uischema.options);
-
-  const showDescription = !isDescriptionHidden(
-    visible,
-    description,
-    focused,
-    appliedUiSchemaOptions.showUnfocusedDescription
-  );
-
-  const firstFormHelperText = showDescription
-    ? description
-    : !isValid
-    ? errors
-    : null;
-  const secondFormHelperText = showDescription && !isValid ? errors : null;
   const InnerComponent = input;
 
   if (!visible) {
@@ -76,9 +57,8 @@ export const MaterialInputControl = (props: ControlProps & WithInput) => {
   return (
     <FormControl
       fullWidth={!appliedUiSchemaOptions.trim}
-      onFocus={onFocus}
-      onBlur={onBlur}
       variant={variant}
+      margin='dense'
       id={id}
     >
       <InputLabel
@@ -97,10 +77,10 @@ export const MaterialInputControl = (props: ControlProps & WithInput) => {
         isValid={isValid}
         visible={visible}
       />
-      <FormHelperText error={!isValid && !showDescription}>
-        {firstFormHelperText}
-      </FormHelperText>
-      <FormHelperText error={!isValid}>{secondFormHelperText}</FormHelperText>
+      {!!description && (
+        <FormHelperText error={false}>{description}</FormHelperText>
+      )}
+      {!!errors && <FormHelperText error={true}>{errors}</FormHelperText>}
     </FormControl>
   );
 };
