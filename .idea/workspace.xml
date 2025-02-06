@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a69afcc6-79db-48c7-a96d-5cfee4f8fe47" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/packages/core/src/util/validator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/actions/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/actions/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/mappers/cell.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/mappers/cell.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/mappers/renderer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/mappers/renderer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/mappers/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/mappers/util.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/reducers/core.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/reducers/core.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/store/jsonFormsCore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/store/jsonFormsCore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/util/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/util/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/util/runtime.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/util/runtime.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/util/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/util/util.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2sfhgB5V38SbcweRjljVfKLkI99" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/josh.eckhoff/WebstormProjects/jsonforms/packages/react&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.core &gt; build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.material-renderers &gt; build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.preparePublish.executor&quot;: &quot;Run&quot;,
+    &quot;npm.react &gt; build.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/josh.eckhoff/WebstormProjects/jsonforms/node_modules/prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/josh.eckhoff/WebstormProjects/jsonforms/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="npm.preparePublish">
+    <configuration name="core &gt; build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/core/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="material-renderers &gt; build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/material-renderers/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="preparePublish" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="preparePublish" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="react &gt; build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/react/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.preparePublish" />
+        <item itemvalue="npm.material-renderers &gt; build" />
+        <item itemvalue="npm.react &gt; build" />
+        <item itemvalue="npm.core &gt; build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a69afcc6-79db-48c7-a96d-5cfee4f8fe47" name="Changes" comment="" />
+      <created>1738852644931</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738852644931</updated>
+      <workItem from="1738852646036" duration="13501000" />
+    </task>
+    <task id="LOCAL-00001" summary="Remove AJV and Unneeded packages">
+      <option name="closed" value="true" />
+      <created>1738855302712</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738855302713</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix select none">
+      <option name="closed" value="true" />
+      <created>1738855766530</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738855766530</updated>
+    </task>
+    <task id="LOCAL-00003" summary="save idea file">
+      <option name="closed" value="true" />
+      <created>1738855851533</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738855851533</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fix default spacing">
+      <option name="closed" value="true" />
+      <created>1738872451401</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738872451401</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Remove AJV and Unneeded packages" />
+    <MESSAGE value="fix select none" />
+    <MESSAGE value="save idea file" />
+    <MESSAGE value="Fix default spacing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix default spacing" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+  </component>
+</project>
