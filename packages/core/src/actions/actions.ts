@@ -23,15 +23,17 @@
   THE SOFTWARE.
 */
 
+import type AJV from 'ajv';
+import type { ErrorObject } from 'ajv';
 import { JsonSchema, UISchemaElement } from '../models';
 import { generateDefaultUISchema, generateJsonSchema } from '../generators';
 
 import { RankedTester, UISchemaTester } from '../testers';
 import { ErrorTranslator, Translator, ValidationMode } from '../store';
-import type { ErrorObject } from 'ajv';
 
 export const INIT = 'jsonforms/INIT' as const;
 export const UPDATE_CORE = 'jsonforms/UPDATE_CORE' as const;
+export const SET_AJV = 'jsonforms/SET_AJV' as const;
 export const UPDATE_DATA = 'jsonforms/UPDATE' as const;
 export const UPDATE_ERRORS = 'jsonforms/UPDATE_ERRORS' as const;
 export const VALIDATE = 'jsonforms/VALIDATE' as const;
@@ -108,6 +110,8 @@ export type CoreActions =
   | InitAction
   | UpdateCoreAction
   | UpdateAction
+  | UpdateErrorsAction
+  | SetAjvAction
   | SetSchemaAction
   | SetUISchemaAction
   | SetValidationModeAction;
@@ -129,7 +133,7 @@ export interface InitAction {
   data: any;
   schema: JsonSchema;
   uischema: UISchemaElement;
-  options?: InitActionOptions;
+  options?: InitActionOptions | AJV;
 }
 
 export interface UpdateCoreAction {
@@ -137,10 +141,11 @@ export interface UpdateCoreAction {
   data?: any;
   schema?: JsonSchema;
   uischema?: UISchemaElement;
-  options?: InitActionOptions;
+  options?: InitActionOptions | AJV;
 }
 
 export interface InitActionOptions {
+  ajv?: AJV;
   validationMode?: ValidationMode;
   additionalErrors?: ErrorObject[];
 }
@@ -154,7 +159,7 @@ export const init = (
   data: any,
   schema: JsonSchema = generateJsonSchema(data),
   uischema?: UISchemaElement,
-  options?: InitActionOptions
+  options?: InitActionOptions | AJV
 ) => ({
   type: INIT,
   data,
@@ -168,7 +173,7 @@ export const updateCore = (
   data: any,
   schema: JsonSchema,
   uischema?: UISchemaElement,
-  options?: InitActionOptions
+  options?: AJV | InitActionOptions
 ): UpdateCoreAction => ({
   type: UPDATE_CORE,
   data,
@@ -197,6 +202,16 @@ export interface UnregisterDefaultDataAction {
 export const unregisterDefaultData = (schemaPath: string) => ({
   type: REMOVE_DEFAULT_DATA,
   schemaPath,
+});
+
+export interface SetAjvAction {
+  type: 'jsonforms/SET_AJV';
+  ajv: AJV;
+}
+
+export const setAjv = (ajv: AJV) => ({
+  type: SET_AJV,
+  ajv,
 });
 
 export const update = (
