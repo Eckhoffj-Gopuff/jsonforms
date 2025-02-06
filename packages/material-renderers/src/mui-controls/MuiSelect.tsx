@@ -71,7 +71,7 @@ export const MuiSelect = React.memo(function MuiSelect(
       multiple={multiple || false}
     >
       {[
-        <MenuItem value={''} key='jsonforms.enum.none'>
+        <MenuItem value={undefined} key='jsonforms.enum.none'>
           <em>{noneOptionLabel}</em>
         </MenuItem>,
       ].concat(
