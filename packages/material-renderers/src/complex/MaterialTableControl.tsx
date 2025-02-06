@@ -64,7 +64,7 @@ import ArrowUpward from '@mui/icons-material/ArrowUpward';
 import { WithDeleteDialogSupport } from './DeleteDialog';
 import NoBorderTableCell from './NoBorderTableCell';
 import TableToolbar from './TableToolbar';
-import { ErrorObject } from 'ajv';
+import type { ErrorObject } from 'ajv';
 import merge from 'lodash/merge';
 
 // we want a cell that doesn't automatically span

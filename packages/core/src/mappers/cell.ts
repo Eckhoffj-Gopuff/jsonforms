@@ -45,7 +45,6 @@ import type { JsonSchema } from '../models';
 import {
   AnyAction,
   Dispatch,
-  getAjv,
   getConfig,
   getData,
   getErrorAt,
@@ -115,7 +114,7 @@ export const mapStateToCellProps = (
   const visible =
     ownProps.visible !== undefined
       ? ownProps.visible
-      : isVisible(uischema, rootData, undefined, getAjv(state));
+      : isVisible(uischema, rootData, undefined);
 
   const rootSchema = getSchema(state);
   const config = getConfig(state);

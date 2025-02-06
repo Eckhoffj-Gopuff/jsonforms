@@ -72,7 +72,6 @@ import {
 } from '../util';
 import {
   Translator,
-  getAjv,
   getCells,
   getConfig,
   getData,
@@ -584,7 +583,7 @@ export const mapStateToControlProps = (
   const path = composeWithUi(uischema, ownProps.path);
   const visible: boolean =
     ownProps.visible === undefined || hasShowRule(uischema)
-      ? isVisible(uischema, rootData, ownProps.path, getAjv(state))
+      ? isVisible(uischema, rootData, ownProps.path)
       : ownProps.visible;
   const controlElement = uischema as ControlElement;
   const id = ownProps.id;
@@ -1042,7 +1041,7 @@ export const mapStateToLayoutProps = (
   const { uischema } = ownProps;
   const visible: boolean =
     ownProps.visible === undefined || hasShowRule(uischema)
-      ? isVisible(ownProps.uischema, rootData, ownProps.path, getAjv(state))
+      ? isVisible(ownProps.uischema, rootData, ownProps.path)
       : ownProps.visible;
 
   const data = Resolve.data(rootData, ownProps.path);
@@ -1128,21 +1127,6 @@ export const mapStateToCombinatorRendererProps = (
   const { data, schema, rootSchema, i18nKeyPrefix, label, ...props } =
     mapStateToControlProps(state, ownProps);
 
-  const ajv = state.jsonforms.core.ajv;
-  const structuralKeywords = [
-    'required',
-    'additionalProperties',
-    'type',
-    'enum',
-    'const',
-  ];
-  const dataIsValid = (errors: ErrorObject[]): boolean => {
-    return (
-      !errors ||
-      errors.length === 0 ||
-      !errors.find((e) => structuralKeywords.indexOf(e.keyword) !== -1)
-    );
-  };
   let indexOfFittingSchema: number;
   // TODO instead of compiling the combinator subschemas we can compile the original schema
   // without the combinator alternatives and then revalidate and check the errors for the
@@ -1153,9 +1137,27 @@ export const mapStateToCombinatorRendererProps = (
       if (_schema.$ref) {
         _schema = Resolve.schema(rootSchema, _schema.$ref, rootSchema);
       }
-      const valFn = ajv.compile(_schema);
-      valFn(data);
-      if (dataIsValid(valFn.errors)) {
+      if (
+        _schema.type === 'string' &&
+        typeof data === 'string' &&
+        data.length > 0
+      ) {
+        indexOfFittingSchema = i;
+        break;
+      } else if (_schema.type === 'number' && typeof data === 'number') {
+        indexOfFittingSchema = i;
+        break;
+      } else if (_schema.type === 'boolean' && typeof data === 'boolean') {
+        indexOfFittingSchema = i;
+        break;
+      } else if (
+        _schema.type === 'object' &&
+        typeof data === 'object' &&
+        (_schema.required?.[0] ?? '') in data
+      ) {
+        indexOfFittingSchema = i;
+        break;
+      } else if (_schema.type === 'null' && data === null) {
         indexOfFittingSchema = i;
         break;
       }
@@ -1280,7 +1282,7 @@ export const mapStateToLabelProps = (
 
   const visible: boolean =
     props.visible === undefined || hasShowRule(uischema)
-      ? isVisible(props.uischema, getData(state), props.path, getAjv(state))
+      ? isVisible(props.uischema, getData(state), props.path)
       : props.visible;
 
   const text = uischema.text;

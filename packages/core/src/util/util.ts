@@ -1,19 +1,19 @@
 /*
   The MIT License
-  
+
   Copyright (c) 2017-2019 EclipseSource Munich
   https://github.com/eclipsesource/jsonforms
-  
+
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-  
+
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,7 +30,6 @@ import find from 'lodash/find';
 import { resolveData, resolveSchema } from './resolvers';
 import { composePaths, toDataPathSegments } from './path';
 import { isEnabled, isVisible } from './runtime';
-import type Ajv from 'ajv';
 import type { JsonSchema, Scoped, UISchemaElement } from '../models';
 
 /**
@@ -163,10 +162,10 @@ export const Paths = {
 
 // Runtime --
 export const Runtime = {
-  isEnabled(uischema: UISchemaElement, data: any, ajv: Ajv): boolean {
-    return isEnabled(uischema, data, undefined, ajv);
+  isEnabled(uischema: UISchemaElement, data: any): boolean {
+    return isEnabled(uischema, data, undefined);
   },
-  isVisible(uischema: UISchemaElement, data: any, ajv: Ajv): boolean {
-    return isVisible(uischema, data, undefined, ajv);
+  isVisible(uischema: UISchemaElement, data: any): boolean {
+    return isVisible(uischema, data, undefined);
   },
 };

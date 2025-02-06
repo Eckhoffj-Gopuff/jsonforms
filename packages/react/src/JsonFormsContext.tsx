@@ -100,10 +100,7 @@ const initialCoreState: JsonFormsCore = {
   data: {},
   schema: {},
   uischema: undefined,
-  errors: [],
   additionalErrors: [],
-  validator: undefined,
-  ajv: undefined,
 };
 
 export interface JsonFormsStateContext extends JsonFormsSubStates {
@@ -133,14 +130,19 @@ const useEffectAfterFirstRender = (
   }, dependencies);
 };
 
-export const JsonFormsStateProvider = ({
+interface JsonFormsStateProps {
+  initState: JsonFormsSubStates;
+  onChange(state: Pick<JsonFormsCore, 'data'>): void;
+  middleware?: Middleware;
+}
+
+export const JsonFormsStateProvider: React.FC<JsonFormsStateProps> = ({
   children,
   initState,
   onChange,
   middleware,
-}: any) => {
-  const { data, schema, uischema, ajv, validationMode, additionalErrors } =
-    initState.core;
+}) => {
+  const { data, schema, uischema, additionalErrors } = initState.core;
 
   const middlewareRef = useRef<Middleware>(middleware ?? defaultMiddleware);
   middlewareRef.current = middleware ?? defaultMiddleware;
@@ -149,8 +151,6 @@ export const JsonFormsStateProvider = ({
     middlewareRef.current(
       initState.core,
       Actions.init(data, schema, uischema, {
-        ajv,
-        validationMode,
         additionalErrors,
       }),
       coreReducer
@@ -163,14 +163,12 @@ export const JsonFormsStateProvider = ({
         middlewareRef.current(
           currentCore,
           Actions.updateCore(data, schema, uischema, {
-            ajv,
-            validationMode,
             additionalErrors,
           }),
           coreReducer
         )
       ),
-    [data, schema, uischema, ajv, validationMode, additionalErrors]
+    [data, schema, uischema, additionalErrors]
   );
 
   const [config, configDispatch] = useReducer(configReducer, undefined, () =>
@@ -257,12 +255,12 @@ export const JsonFormsStateProvider = ({
    * even on low-end mobile device settings in the Chrome simulator.
    */
   const debouncedEmit = useCallback(
-    debounce((...args: any[]) => onChangeRef.current?.(...args), 10),
+    debounce((args: any) => onChangeRef.current?.(args), 10),
     []
   );
   useEffect(() => {
-    debouncedEmit({ data: core.data, errors: core.errors });
-  }, [core.data, core.errors]);
+    debouncedEmit({ data: core.data });
+  }, [core.data]);
 
   return (
     <JsonFormsContext.Provider value={contextValue}>

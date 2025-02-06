@@ -1,4 +1,3 @@
-import type Ajv from 'ajv';
 import type { ErrorObject } from 'ajv';
 import { JsonSchema, UISchemaElement } from '../models';
 import get from 'lodash/get';
@@ -18,17 +17,8 @@ const getErrorsAt =
     matchPath: (path: string) => boolean
   ) =>
   (state: JsonFormsCore): ErrorObject[] => {
-    const errors = state.errors ?? [];
     const additionalErrors = state.additionalErrors ?? [];
-    return errorsAt(
-      instancePath,
-      schema,
-      matchPath
-    )(
-      state.validationMode === 'ValidateAndHide'
-        ? additionalErrors
-        : [...errors, ...additionalErrors]
-    );
+    return errorsAt(instancePath, schema, matchPath)(additionalErrors);
   };
 
 export const errorAt = (instancePath: string, schema: JsonSchema) =>
@@ -53,8 +43,6 @@ export const getSchema = (state: JsonFormsState): JsonSchema =>
   extractSchema(get(state, 'jsonforms.core'));
 export const getUiSchema = (state: JsonFormsState): UISchemaElement =>
   extractUiSchema(get(state, 'jsonforms.core'));
-export const getAjv = (state: JsonFormsState): Ajv =>
-  extractAjv(get(state, 'jsonforms.core'));
 export const getRenderers = (
   state: JsonFormsState
 ): JsonFormsRendererRegistryEntry[] => get(state, 'jsonforms.renderers');
@@ -68,6 +56,5 @@ export const getUISchemas = (
 export const extractData = (state: JsonFormsCore) => get(state, 'data');
 export const extractSchema = (state: JsonFormsCore) => get(state, 'schema');
 export const extractUiSchema = (state: JsonFormsCore) => get(state, 'uischema');
-export const extractAjv = (state: JsonFormsCore) => get(state, 'ajv');
 
 export const getConfig = (state: JsonFormsState) => state.jsonforms.config;

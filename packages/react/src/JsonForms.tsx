@@ -24,7 +24,6 @@
 */
 import maxBy from 'lodash/maxBy';
 import React, { ComponentType, useMemo } from 'react';
-import type Ajv from 'ajv';
 import type { ErrorObject } from 'ajv';
 import { UnknownRenderer } from './UnknownRenderer';
 import {
@@ -42,7 +41,6 @@ import {
   OwnPropsOfJsonFormsRenderer,
   removeId,
   UISchemaElement,
-  ValidationMode,
 } from '@jsonforms/core';
 import {
   JsonFormsStateProvider,
@@ -54,7 +52,7 @@ interface JsonFormsRendererState {
 }
 
 export interface JsonFormsReactProps {
-  onChange?(state: Pick<JsonFormsCore, 'data' | 'errors'>): void;
+  onChange?(state: Pick<JsonFormsCore, 'data'>): void;
   middleware?: Middleware;
 }
 
@@ -190,11 +188,9 @@ export interface JsonFormsInitStateProps {
   uischema?: UISchemaElement;
   renderers: JsonFormsRendererRegistryEntry[];
   cells?: JsonFormsCellRendererRegistryEntry[];
-  ajv?: Ajv;
   config?: any;
   uischemas?: JsonFormsUISchemaRegistryEntry[];
   readonly?: boolean;
-  validationMode?: ValidationMode;
   i18n?: JsonFormsI18nState;
   additionalErrors?: ErrorObject[];
 }
@@ -203,7 +199,6 @@ export const JsonForms = (
   props: JsonFormsInitStateProps & JsonFormsReactProps
 ) => {
   const {
-    ajv,
     data,
     schema,
     uischema,
@@ -213,7 +208,6 @@ export const JsonForms = (
     config,
     uischemas,
     readonly,
-    validationMode,
     i18n,
     additionalErrors,
     middleware,
@@ -234,11 +228,9 @@ export const JsonForms = (
     <JsonFormsStateProvider
       initState={{
         core: {
-          ajv,
           data,
           schema: schemaToUse,
           uischema: uischemaToUse,
-          validationMode: validationMode,
           additionalErrors: additionalErrors,
         },
         config,
