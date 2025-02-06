@@ -23,15 +23,17 @@
   THE SOFTWARE.
 */
 import isEmpty from 'lodash/isEmpty';
-import React from 'react';
+import React, { ComponentType } from 'react';
+import type Ajv from 'ajv';
 import type { UISchemaElement } from '@jsonforms/core';
 import {
+  getAjv,
   JsonFormsCellRendererRegistryEntry,
   JsonFormsRendererRegistryEntry,
   JsonSchema,
   OwnPropsOfRenderer,
 } from '@jsonforms/core';
-import { JsonFormsDispatch } from '@jsonforms/react';
+import { JsonFormsDispatch, useJsonForms } from '@jsonforms/react';
 import { Grid } from '@mui/material';
 
 export const renderLayoutElements = (
@@ -94,6 +96,22 @@ const MaterialLayoutRendererComponent = ({
 export const MaterialLayoutRenderer = React.memo(
   MaterialLayoutRendererComponent
 );
+
+export interface AjvProps {
+  ajv: Ajv;
+}
+
+// TODO fix @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const withAjvProps = <P extends {}>(
+  Component: ComponentType<AjvProps & P>
+) =>
+  function WithAjvProps(props: P) {
+    const ctx = useJsonForms();
+    const ajv = getAjv({ jsonforms: { ...ctx } });
+
+    return <Component {...props} ajv={ajv} />;
+  };
 
 export interface MaterialLabelableLayoutRendererProps
   extends MaterialLayoutRendererProps {

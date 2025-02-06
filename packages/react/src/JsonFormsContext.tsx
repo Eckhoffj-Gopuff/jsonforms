@@ -100,7 +100,10 @@ const initialCoreState: JsonFormsCore = {
   data: {},
   schema: {},
   uischema: undefined,
+  errors: [],
   additionalErrors: [],
+  validator: undefined,
+  ajv: undefined,
 };
 
 export interface JsonFormsStateContext extends JsonFormsSubStates {
@@ -142,7 +145,8 @@ export const JsonFormsStateProvider: React.FC<JsonFormsStateProps> = ({
   onChange,
   middleware,
 }) => {
-  const { data, schema, uischema, additionalErrors } = initState.core;
+  const { data, schema, uischema, ajv, validationMode, additionalErrors } =
+    initState.core;
 
   const middlewareRef = useRef<Middleware>(middleware ?? defaultMiddleware);
   middlewareRef.current = middleware ?? defaultMiddleware;
@@ -151,6 +155,8 @@ export const JsonFormsStateProvider: React.FC<JsonFormsStateProps> = ({
     middlewareRef.current(
       initState.core,
       Actions.init(data, schema, uischema, {
+        ajv,
+        validationMode,
         additionalErrors,
       }),
       coreReducer
@@ -163,12 +169,14 @@ export const JsonFormsStateProvider: React.FC<JsonFormsStateProps> = ({
         middlewareRef.current(
           currentCore,
           Actions.updateCore(data, schema, uischema, {
+            ajv,
+            validationMode,
             additionalErrors,
           }),
           coreReducer
         )
       ),
-    [data, schema, uischema, additionalErrors]
+    [data, schema, uischema, ajv, validationMode, additionalErrors]
   );
 
   const [config, configDispatch] = useReducer(configReducer, undefined, () =>
@@ -259,8 +267,8 @@ export const JsonFormsStateProvider: React.FC<JsonFormsStateProps> = ({
     []
   );
   useEffect(() => {
-    debouncedEmit({ data: core.data });
-  }, [core.data]);
+    debouncedEmit({ data: core.data, errors: core.errors });
+  }, [core.data, core.errors]);
 
   return (
     <JsonFormsContext.Provider value={contextValue}>

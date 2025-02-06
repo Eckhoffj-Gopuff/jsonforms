@@ -43,8 +43,10 @@ import {
   withTranslateProps,
 } from '@jsonforms/react';
 import {
+  AjvProps,
   MaterialLayoutRenderer,
   MaterialLayoutRendererProps,
+  withAjvProps,
 } from '../util/layout';
 
 export const isSingleLevelCategorization: Tester = and(
@@ -72,6 +74,7 @@ export interface CategorizationState {
 
 export interface MaterialCategorizationLayoutRendererProps
   extends StatePropsOfLayout,
+    AjvProps,
     TranslateProps {
   selected?: number;
   ownState?: boolean;
@@ -93,6 +96,7 @@ export const MaterialCategorizationLayoutRenderer = (
     enabled,
     selected,
     onChange,
+    ajv,
     t,
   } = props;
   const categorization = uischema as Categorization;
@@ -102,9 +106,9 @@ export const MaterialCategorizationLayoutRenderer = (
   const categories = useMemo(
     () =>
       categorization.elements.filter((category: Category) =>
-        isVisible(category, data, undefined)
+        isVisible(category, data, undefined, ajv)
       ),
-    [categorization, data]
+    [categorization, data, ajv]
   );
 
   if (categorization !== previousCategorization) {
@@ -162,6 +166,8 @@ export const MaterialCategorizationLayoutRenderer = (
   );
 };
 
-export default withTranslateProps(
-  withJsonFormsLayoutProps(MaterialCategorizationLayoutRenderer)
+export default withAjvProps(
+  withTranslateProps(
+    withJsonFormsLayoutProps(MaterialCategorizationLayoutRenderer)
+  )
 );

@@ -31,6 +31,8 @@ Optional props:
 - `config: any` - form-wide options. May contain default ui schema options.
 - `readonly: boolean` - whether all controls shall be readonly.
 - `uischemas: JsonFormsUiSchemaEntry[]` - registry for dynamic ui schema dispatching
+- `validationMode: 'ValidateAndShow' | 'ValidateAndHide' | 'NoValidation'` - the validation mode for the form
+- `ajv: AJV` - custom Ajv instance for the form
 - `middleware: Middleware` - can be used to hook into the form-wide data management.
 - `i18n: JsonFormsI18nState` - can be used to internationalize the rendered form.
 - `onChange` - callback which is called initially and on each data change, containing the updated data and the validation result.

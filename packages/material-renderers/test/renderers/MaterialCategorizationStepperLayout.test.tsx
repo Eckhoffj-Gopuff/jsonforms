@@ -26,6 +26,7 @@ import React from 'react';
 import {
   Categorization,
   ControlElement,
+  createAjv,
   defaultJsonFormsI18nState,
   Layout,
   layoutDefaultProps,
@@ -69,6 +70,7 @@ const fixture = {
 const testDefaultProps = {
   ...layoutDefaultProps,
   data: fixture.data,
+  ajv: createAjv(),
   t: defaultJsonFormsI18nState.translate,
   locale: defaultJsonFormsI18nState.locale,
 };
