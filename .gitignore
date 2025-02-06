@@ -7,7 +7,6 @@ docs
 *.log
 stats.html
 
-.idea/
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
