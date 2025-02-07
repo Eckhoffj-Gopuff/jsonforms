@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a69afcc6-79db-48c7-a96d-5cfee4f8fe47" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/mappers/cell.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/mappers/cell.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/mappers/renderer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/mappers/renderer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/reducers/core.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/reducers/core.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/util/runtime.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/util/runtime.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/material-renderers/src/controls/MaterialBooleanControl.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/src/controls/MaterialBooleanControl.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/material-renderers/src/layouts/MaterialGroupLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/src/layouts/MaterialGroupLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/material-renderers/test/renderers/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/test/renderers/util.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +115,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738852644931</updated>
-      <workItem from="1738852646036" duration="17011000" />
+      <workItem from="1738852646036" duration="21357000" />
     </task>
     <task id="LOCAL-00001" summary="Remove AJV and Unneeded packages">
       <option name="closed" value="true" />
@@ -178,7 +173,47 @@
       <option name="project" value="LOCAL" />
       <updated>1738873288859</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="more ajv removal">
+      <option name="closed" value="true" />
+      <created>1738936358752</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738936358752</updated>
+    </task>
+    <task id="LOCAL-00009" summary="small default improvement">
+      <option name="closed" value="true" />
+      <created>1738937904148</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1738937904148</updated>
+    </task>
+    <task id="LOCAL-00010" summary="dedup error messages">
+      <option name="closed" value="true" />
+      <created>1738938354260</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738938354260</updated>
+    </task>
+    <task id="LOCAL-00011" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1738938366007</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1738938366007</updated>
+    </task>
+    <task id="LOCAL-00012" summary="reduce builds needed">
+      <option name="closed" value="true" />
+      <created>1738938921201</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738938921201</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +231,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CODE_SMELLS_PROFILE" value="Project Default" />
     <MESSAGE value="Remove AJV and Unneeded packages" />
     <MESSAGE value="fix select none" />
     <MESSAGE value="save idea file" />
@@ -203,7 +239,12 @@
     <MESSAGE value="undo ajv removal" />
     <MESSAGE value="add idea files for simplicity" />
     <MESSAGE value="undo more ajv removal" />
-    <option name="LAST_COMMIT_MESSAGE" value="undo more ajv removal" />
+    <MESSAGE value="more ajv removal" />
+    <MESSAGE value="small default improvement" />
+    <MESSAGE value="dedup error messages" />
+    <MESSAGE value="cleanup" />
+    <MESSAGE value="reduce builds needed" />
+    <option name="LAST_COMMIT_MESSAGE" value="reduce builds needed" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

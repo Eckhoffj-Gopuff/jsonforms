@@ -58,7 +58,7 @@ const GroupComponent = React.memo(function GroupComponent({
   return (
     <Card style={style}>
       {!isEmpty(label) && <CardHeader title={label} />}
-      <CardContent>
+      <CardContent sx={{ pt: 0 }}>
         <MaterialLayoutRenderer
           {...props}
           visible={visible}
