@@ -33,8 +33,6 @@ import type { ErrorObject } from 'ajv';
 export const INIT = 'jsonforms/INIT' as const;
 export const UPDATE_CORE = 'jsonforms/UPDATE_CORE' as const;
 export const UPDATE_DATA = 'jsonforms/UPDATE' as const;
-export const UPDATE_ERRORS = 'jsonforms/UPDATE_ERRORS' as const;
-export const VALIDATE = 'jsonforms/VALIDATE' as const;
 export const ADD_RENDERER = 'jsonforms/ADD_RENDERER' as const;
 export const REMOVE_RENDERER = 'jsonforms/REMOVE_RENDERER' as const;
 export const ADD_CELL = 'jsonforms/ADD_CELL' as const;
@@ -117,11 +115,6 @@ export interface UpdateAction {
   path: string;
   updater(existingData?: any): any;
   context?: object;
-}
-
-export interface UpdateErrorsAction {
-  type: 'jsonforms/UPDATE_ERRORS';
-  errors: ErrorObject[];
 }
 
 export interface InitAction {
@@ -208,11 +201,6 @@ export const update = (
   path,
   updater,
   context,
-});
-
-export const updateErrors = (errors: ErrorObject[]): UpdateErrorsAction => ({
-  type: UPDATE_ERRORS,
-  errors,
 });
 
 export interface AddRendererAction {
