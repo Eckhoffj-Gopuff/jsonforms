@@ -138,5 +138,6 @@ export const formatErrorMessage = (errors: string[]) => {
     return '';
   }
 
-  return errors.join('\n');
+  const dedupedErrors = [...new Set(errors)];
+  return dedupedErrors.join('\n');
 };
