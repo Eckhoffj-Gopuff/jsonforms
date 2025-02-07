@@ -24,12 +24,7 @@
 */
 import merge from 'lodash/merge';
 import React from 'react';
-import {
-  ControlProps,
-  showAsRequired,
-  isDescriptionHidden,
-  OwnPropsOfEnum,
-} from '@jsonforms/core';
+import { ControlProps, showAsRequired, OwnPropsOfEnum } from '@jsonforms/core';
 import {
   FormControl,
   FormControlLabel,
@@ -38,10 +33,8 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
-import { useFocus } from '../util';
 
 export const MaterialRadioGroup = (props: ControlProps & OwnPropsOfEnum) => {
-  const [focused, onFocus, onBlur] = useFocus();
   const {
     config,
     label,
@@ -57,24 +50,13 @@ export const MaterialRadioGroup = (props: ControlProps & OwnPropsOfEnum) => {
   } = props;
   const isValid = errors.length === 0;
   const appliedUiSchemaOptions = merge({}, config, props.uischema.options);
-  const showDescription = !isDescriptionHidden(
-    visible,
-    description,
-    focused,
-    appliedUiSchemaOptions.showUnfocusedDescription
-  );
 
   if (!visible) {
     return null;
   }
 
   return (
-    <FormControl
-      component='fieldset'
-      fullWidth={!appliedUiSchemaOptions.trim}
-      onFocus={onFocus}
-      onBlur={onBlur}
-    >
+    <FormControl component='fieldset' fullWidth={!appliedUiSchemaOptions.trim}>
       <FormLabel
         error={!isValid}
         component='legend'
@@ -102,9 +84,10 @@ export const MaterialRadioGroup = (props: ControlProps & OwnPropsOfEnum) => {
           />
         ))}
       </RadioGroup>
-      <FormHelperText error={!isValid}>
-        {!isValid ? errors : showDescription ? description : null}
-      </FormHelperText>
+      {!!description && (
+        <FormHelperText error={false}>{description}</FormHelperText>
+      )}
+      {!!errors && <FormHelperText error={true}>{errors}</FormHelperText>}
     </FormControl>
   );
 };
