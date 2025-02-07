@@ -189,7 +189,7 @@ export const doCreateDefaultValue = (
       ? Resolve.schema(rootSchema, schema.$ref, rootSchema)
       : schema;
   if (resolvedSchema.default !== undefined) {
-    return extractDefaults(resolvedSchema, rootSchema);
+    return cloneDeep(resolvedSchema.default);
   }
   if (hasType(resolvedSchema, 'string')) {
     if (
