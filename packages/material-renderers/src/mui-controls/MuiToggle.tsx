@@ -27,24 +27,31 @@ import { CellProps, WithClassname } from '@jsonforms/core';
 import { Switch, InputProps } from '@mui/material';
 import merge from 'lodash/merge';
 
-interface MuiToggleInputProps {
+interface MuiToggleInputProps
+  extends Pick<
+      CellProps,
+      | 'data'
+      | 'uischema'
+      | 'id'
+      | 'enabled'
+      | 'path'
+      | 'handleChange'
+      | 'config'
+    >,
+    WithClassname {
   inputProps?: InputProps['inputProps'];
 }
-
-export const MuiToggle = React.memo(function MuiToggle(
-  props: CellProps & WithClassname & MuiToggleInputProps
-) {
-  const {
-    data,
-    className,
-    id,
-    enabled,
-    uischema,
-    path,
-    handleChange,
-    config,
-    inputProps,
-  } = props;
+const MuiToggleBase: React.FC<MuiToggleInputProps> = ({
+  data,
+  className,
+  id,
+  enabled,
+  uischema,
+  path,
+  handleChange,
+  config,
+  inputProps,
+}) => {
   const appliedUiSchemaOptions = merge({}, config, uischema.options);
   const inputPropsMerged = merge({}, inputProps, {
     autoFocus: !!appliedUiSchemaOptions.focus,
@@ -61,4 +68,6 @@ export const MuiToggle = React.memo(function MuiToggle(
       inputProps={inputPropsMerged}
     />
   );
-});
+};
+
+export const MuiToggle = React.memo(MuiToggleBase);

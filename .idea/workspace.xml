@@ -7,8 +7,9 @@
     <list default="true" id="a69afcc6-79db-48c7-a96d-5cfee4f8fe47" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/material-renderers/src/controls/MaterialBooleanControl.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/src/controls/MaterialBooleanControl.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/material-renderers/src/layouts/MaterialGroupLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/src/layouts/MaterialGroupLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/material-renderers/test/renderers/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/test/renderers/util.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/material-renderers/src/controls/MaterialBooleanToggleControl.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/src/controls/MaterialBooleanToggleControl.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/material-renderers/src/mui-controls/MuiCheckbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/src/mui-controls/MuiCheckbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/material-renderers/src/mui-controls/MuiToggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/material-renderers/src/mui-controls/MuiToggle.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +116,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738852644931</updated>
-      <workItem from="1738852646036" duration="21357000" />
+      <workItem from="1738852646036" duration="24034000" />
     </task>
     <task id="LOCAL-00001" summary="Remove AJV and Unneeded packages">
       <option name="closed" value="true" />
@@ -213,7 +214,31 @@
       <option name="project" value="LOCAL" />
       <updated>1738938921201</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="better messages and spacing">
+      <option name="closed" value="true" />
+      <created>1738941120729</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1738941120729</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix spacing">
+      <option name="closed" value="true" />
+      <created>1738941329792</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738941329792</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix spacing">
+      <option name="closed" value="true" />
+      <created>1738941792678</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1738941792678</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +269,9 @@
     <MESSAGE value="dedup error messages" />
     <MESSAGE value="cleanup" />
     <MESSAGE value="reduce builds needed" />
-    <option name="LAST_COMMIT_MESSAGE" value="reduce builds needed" />
+    <MESSAGE value="better messages and spacing" />
+    <MESSAGE value="fix spacing" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix spacing" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

@@ -22,7 +22,6 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
-import isEmpty from 'lodash/isEmpty';
 import React from 'react';
 import {
   isBooleanControl,
@@ -33,7 +32,7 @@ import {
   and,
 } from '@jsonforms/core';
 import { withJsonFormsControlProps } from '@jsonforms/react';
-import { FormControlLabel, FormHelperText } from '@mui/material';
+import { FormControl, FormControlLabel, FormHelperText } from '@mui/material';
 import { MuiToggle } from '../mui-controls';
 
 export const MaterialBooleanToggleControl = ({
@@ -43,8 +42,6 @@ export const MaterialBooleanToggleControl = ({
   id,
   enabled,
   uischema,
-  schema,
-  rootSchema,
   handleChange,
   errors,
   path,
@@ -67,23 +64,18 @@ export const MaterialBooleanToggleControl = ({
   }
 
   return (
-    <>
+    <FormControl variant='standard'>
       <FormControlLabel
         label={label}
         id={id}
         control={
           <MuiToggle
             id={`${id}-input`}
-            isValid={isEmpty(errors)}
             data={data}
             enabled={enabled}
-            visible={visible}
             path={path}
             uischema={uischema}
-            schema={schema}
-            rootSchema={rootSchema}
             handleChange={handleChange}
-            errors={errors}
             config={config}
             inputProps={{
               'aria-describedby': ariaDescribedBy,
@@ -101,7 +93,7 @@ export const MaterialBooleanToggleControl = ({
           {errors}
         </FormHelperText>
       )}
-    </>
+    </FormControl>
   );
 };
 

@@ -22,7 +22,6 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
-import isEmpty from 'lodash/isEmpty';
 import React from 'react';
 import {
   isBooleanControl,
@@ -31,7 +30,7 @@ import {
   ControlProps,
 } from '@jsonforms/core';
 import { withJsonFormsControlProps } from '@jsonforms/react';
-import { FormControlLabel, FormHelperText } from '@mui/material';
+import { FormControlLabel, FormHelperText, FormControl } from '@mui/material';
 import { MuiCheckbox } from '../mui-controls';
 
 export const MaterialBooleanControl = ({
@@ -41,8 +40,6 @@ export const MaterialBooleanControl = ({
   id,
   enabled,
   uischema,
-  schema,
-  rootSchema,
   handleChange,
   errors,
   path,
@@ -65,23 +62,18 @@ export const MaterialBooleanControl = ({
   }
 
   return (
-    <>
+    <FormControl variant='standard'>
       <FormControlLabel
         label={label}
         id={id}
         control={
           <MuiCheckbox
             id={`${id}-input`}
-            isValid={isEmpty(errors)}
             data={data}
             enabled={enabled}
-            visible={visible}
             path={path}
             uischema={uischema}
-            schema={schema}
-            rootSchema={rootSchema}
             handleChange={handleChange}
-            errors={errors}
             config={config}
             inputProps={{
               'aria-describedby': ariaDescribedBy,
@@ -89,17 +81,17 @@ export const MaterialBooleanControl = ({
           />
         }
       />
-      {!!description && (
-        <FormHelperText id={helpId1} error={false}>
-          {description}
-        </FormHelperText>
-      )}
-      {!!errors && (
-        <FormHelperText id={helpId2} error={true}>
-          {errors}
-        </FormHelperText>
-      )}
-    </>
+      {/*{!!description && (*/}
+      {/*  <FormHelperText id={helpId1} error={false}>*/}
+      {/*    {description}*/}
+      {/*  </FormHelperText>*/}
+      {/*)}*/}
+      {/*{!!errors && (*/}
+      {/*  <FormHelperText id={helpId2} error={true}>*/}
+      {/*    {errors}*/}
+      {/*  </FormHelperText>*/}
+      {/*)}*/}
+    </FormControl>
   );
 };
 

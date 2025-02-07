@@ -27,24 +27,32 @@ import { CellProps, WithClassname } from '@jsonforms/core';
 import { Checkbox, InputProps } from '@mui/material';
 import merge from 'lodash/merge';
 
-interface MuiCheckboxInputProps {
+interface MuiCheckboxInputProps
+  extends Pick<
+      CellProps,
+      | 'data'
+      | 'uischema'
+      | 'id'
+      | 'enabled'
+      | 'path'
+      | 'handleChange'
+      | 'config'
+    >,
+    WithClassname {
   inputProps?: InputProps['inputProps'];
 }
 
-export const MuiCheckbox = React.memo(function MuiCheckbox(
-  props: CellProps & WithClassname & MuiCheckboxInputProps
-) {
-  const {
-    data,
-    className,
-    id,
-    enabled,
-    uischema,
-    path,
-    handleChange,
-    config,
-    inputProps,
-  } = props;
+const MuiCheckboxBase: React.FC<MuiCheckboxInputProps> = ({
+  data,
+  className,
+  id,
+  enabled,
+  uischema,
+  path,
+  handleChange,
+  config,
+  inputProps,
+}) => {
   const appliedUiSchemaOptions = merge({}, config, uischema.options);
   const inputPropsMerged = merge({}, inputProps, {
     autoFocus: !!appliedUiSchemaOptions.focus,
@@ -62,4 +70,6 @@ export const MuiCheckbox = React.memo(function MuiCheckbox(
       inputProps={inputPropsMerged}
     />
   );
-});
+};
+
+export const MuiCheckbox = React.memo(MuiCheckboxBase);
