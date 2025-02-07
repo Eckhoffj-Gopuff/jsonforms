@@ -30,7 +30,7 @@ import {
   ControlProps,
 } from '@jsonforms/core';
 import { withJsonFormsControlProps } from '@jsonforms/react';
-import { FormControlLabel, FormHelperText, FormControl } from '@mui/material';
+import { FormControlLabel, FormHelperText } from '@mui/material';
 import { MuiCheckbox } from '../mui-controls';
 
 export const MaterialBooleanControl = ({
@@ -62,7 +62,7 @@ export const MaterialBooleanControl = ({
   }
 
   return (
-    <FormControl variant='standard'>
+    <>
       <FormControlLabel
         label={label}
         id={id}
@@ -81,17 +81,17 @@ export const MaterialBooleanControl = ({
           />
         }
       />
-      {/*{!!description && (*/}
-      {/*  <FormHelperText id={helpId1} error={false}>*/}
-      {/*    {description}*/}
-      {/*  </FormHelperText>*/}
-      {/*)}*/}
-      {/*{!!errors && (*/}
-      {/*  <FormHelperText id={helpId2} error={true}>*/}
-      {/*    {errors}*/}
-      {/*  </FormHelperText>*/}
-      {/*)}*/}
-    </FormControl>
+      {!!description && (
+        <FormHelperText id={helpId1} error={false}>
+          {description}
+        </FormHelperText>
+      )}
+      {!!errors && (
+        <FormHelperText id={helpId2} error={true}>
+          {errors}
+        </FormHelperText>
+      )}
+    </>
   );
 };
 

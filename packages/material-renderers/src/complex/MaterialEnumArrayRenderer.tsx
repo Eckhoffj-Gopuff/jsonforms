@@ -25,7 +25,6 @@ import {
   FormHelperText,
   FormLabel,
 } from '@mui/material';
-import isEmpty from 'lodash/isEmpty';
 import React from 'react';
 import merge from 'lodash/merge';
 import { useFocus } from '../util';
@@ -92,7 +91,6 @@ export const MaterialEnumArrayRenderer = ({
                 <MuiCheckbox
                   id={id + '-' + option.value}
                   key={'checkbox-' + option.value}
-                  isValid={isEmpty(errors)}
                   path={optionPath}
                   handleChange={(_childPath, newValue) =>
                     newValue
@@ -100,9 +98,6 @@ export const MaterialEnumArrayRenderer = ({
                       : removeItem(path, option.value)
                   }
                   data={checkboxValue}
-                  errors={errors}
-                  schema={schema}
-                  visible={visible}
                   {...otherProps}
                 />
               }

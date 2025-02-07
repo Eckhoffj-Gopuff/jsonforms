@@ -32,7 +32,7 @@ import {
   and,
 } from '@jsonforms/core';
 import { withJsonFormsControlProps } from '@jsonforms/react';
-import { FormControl, FormControlLabel, FormHelperText } from '@mui/material';
+import { FormControlLabel, FormHelperText } from '@mui/material';
 import { MuiToggle } from '../mui-controls';
 
 export const MaterialBooleanToggleControl = ({
@@ -64,7 +64,7 @@ export const MaterialBooleanToggleControl = ({
   }
 
   return (
-    <FormControl variant='standard'>
+    <>
       <FormControlLabel
         label={label}
         id={id}
@@ -93,7 +93,7 @@ export const MaterialBooleanToggleControl = ({
           {errors}
         </FormHelperText>
       )}
-    </FormControl>
+    </>
   );
 };
 
