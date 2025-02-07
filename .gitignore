@@ -15,3 +15,4 @@ stats.html
 packages/examples-react/build
 
 **/.angular/cache
+/.idea/

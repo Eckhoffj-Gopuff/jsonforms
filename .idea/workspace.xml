@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a69afcc6-79db-48c7-a96d-5cfee4f8fe47" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/packages/core/src/util/validator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/actions/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/actions/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/mappers/cell.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/mappers/cell.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/mappers/renderer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/mappers/renderer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/mappers/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/mappers/util.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/reducers/core.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/reducers/core.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/store/jsonFormsCore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/store/jsonFormsCore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/store/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/util/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/util/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/util/runtime.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/util/runtime.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/util/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/util/util.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/mappers/cell.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/mappers/cell.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/mappers/renderer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/mappers/renderer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/reducers/core.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/reducers/core.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/util/runtime.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/util/runtime.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,26 +32,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/josh.eckhoff/WebstormProjects/jsonforms/packages/react&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.core &gt; build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.material-renderers &gt; build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.preparePublish.executor&quot;: &quot;Run&quot;,
-    &quot;npm.react &gt; build.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/josh.eckhoff/WebstormProjects/jsonforms/node_modules/prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/josh.eckhoff/WebstormProjects/jsonforms/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/josh.eckhoff/WebstormProjects/jsonforms/packages/react",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.core > build.executor": "Run",
+    "npm.material-renderers > build.executor": "Run",
+    "npm.preparePublish.executor": "Run",
+    "npm.react > build.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/Users/josh.eckhoff/WebstormProjects/jsonforms/node_modules/prettier",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "/Users/josh.eckhoff/WebstormProjects/jsonforms/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="npm.preparePublish">
     <configuration name="core &gt; build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/packages/core/package.json" />
@@ -119,7 +120,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738852644931</updated>
-      <workItem from="1738852646036" duration="13501000" />
+      <workItem from="1738852646036" duration="17011000" />
     </task>
     <task id="LOCAL-00001" summary="Remove AJV and Unneeded packages">
       <option name="closed" value="true" />
@@ -153,7 +154,31 @@
       <option name="project" value="LOCAL" />
       <updated>1738872451401</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="undo ajv removal">
+      <option name="closed" value="true" />
+      <created>1738872822183</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738872822183</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add idea files for simplicity">
+      <option name="closed" value="true" />
+      <created>1738872844932</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738872844932</updated>
+    </task>
+    <task id="LOCAL-00007" summary="undo more ajv removal">
+      <option name="closed" value="true" />
+      <created>1738873288859</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738873288859</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +200,10 @@
     <MESSAGE value="fix select none" />
     <MESSAGE value="save idea file" />
     <MESSAGE value="Fix default spacing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix default spacing" />
+    <MESSAGE value="undo ajv removal" />
+    <MESSAGE value="add idea files for simplicity" />
+    <MESSAGE value="undo more ajv removal" />
+    <option name="LAST_COMMIT_MESSAGE" value="undo more ajv removal" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

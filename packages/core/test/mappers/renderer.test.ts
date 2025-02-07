@@ -1,19 +1,19 @@
 /*
   The MIT License
-  
+
   Copyright (c) 2017-2019 EclipseSource Munich
   https://github.com/eclipsesource/jsonforms
-  
+
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-  
+
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -27,26 +27,25 @@ import * as Redux from 'redux';
 import configureStore from 'redux-mock-store';
 import test from 'ava';
 
-import { ErrorObject } from 'ajv';
-import { JsonFormsCore, JsonFormsState, i18nJsonSchema } from '../../src/store';
-import { coreReducer, defaultJsonFormsI18nState } from '../../src/reducers';
+import type { ErrorObject } from 'ajv';
 import {
+  JsonFormsCore,
+  JsonFormsState,
+  i18nJsonSchema,
+  coreReducer,
+  defaultJsonFormsI18nState,
   CoreActions,
   init,
   setValidationMode,
   update,
   UpdateAction,
   UPDATE_DATA,
-} from '../../src/actions';
-import {
   ControlElement,
   JsonSchema,
   JsonSchema7,
   LabelElement,
   RuleEffect,
   UISchemaElement,
-} from '../../src/models';
-import {
   OwnPropsOfControl,
   computeLabel,
   createDefaultValue,
@@ -64,9 +63,10 @@ import {
   mapStateToMultiEnumControlProps,
   mapStateToOneOfEnumControlProps,
   mapStateToOneOfProps,
-} from '../../src/mappers';
-import { clearAllIds, convertDateToString, createAjv } from '../../src/util';
-import { rankWith } from '../../src';
+  clearAllIds,
+  convertDateToString,
+  rankWith,
+} from '../../src';
 
 const middlewares: Redux.Middleware[] = [];
 const mockStore = configureStore<JsonFormsState>(middlewares);
@@ -211,7 +211,6 @@ test('mapStateToControlProps - visible via state with path from ownProps ', (t) 
           foo: { firstName: 'Lisa' },
         },
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -281,7 +280,6 @@ test('mapStateToControlProps - enabled via state with path from ownProps ', (t) 
           foo: { firstName: 'Lisa' },
         },
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -456,7 +454,6 @@ test('mapStateToControlProps - hide errors in hide validation mode', (t) => {
     undefined,
     init({ animal: 100 }, schema, uischema)
   );
-  t.is(initCoreState.errors.length, 1);
 
   const ownProps = {
     uischema,
@@ -471,7 +468,6 @@ test('mapStateToControlProps - hide errors in hide validation mode', (t) => {
     initCoreState,
     setValidationMode('ValidateAndHide')
   );
-  t.is(hideErrorsState.errors.length, 1);
 
   const hideErrorsProps = mapStateToControlProps(
     { jsonforms: { core: hideErrorsState } },
@@ -847,7 +843,6 @@ test('mapDispatchToArrayControlProps should adding items to array', (t) => {
     uischema,
     schema,
     data,
-    errors: [] as ErrorObject[],
   };
   const [getCore, dispatch] = mockDispatch(initCore);
   dispatch(init(data, schema, uischema));
@@ -872,7 +867,6 @@ test('mapDispatchToArrayControlProps should remove items from array', (t) => {
     uischema,
     schema,
     data,
-    errors: [] as ErrorObject[],
   };
   const [getCore, dispatch] = mockDispatch(initCore);
   dispatch(init(data, schema, uischema));
@@ -898,7 +892,6 @@ test('mapDispatchToArrayControlProps should remove items from array with more th
     uischema,
     schema,
     data,
-    errors: [] as ErrorObject[],
   };
   const [getCore, dispatch] = mockDispatch(initCore);
   dispatch(init(data, schema, uischema));
@@ -931,7 +924,6 @@ test('mapStateToLayoutProps - visible via state with path from ownProps ', (t) =
           foo: { firstName: 'Lisa' },
         },
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -965,7 +957,6 @@ test('mapStateToArrayControlProps - should include minItems in array control pro
         schema,
         data: {},
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1004,7 +995,6 @@ test('mapStateToArrayControlProps - should include maxItems in array control pro
         schema,
         data: {},
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1043,7 +1033,6 @@ test('mapStateToArrayLayoutProps - should include minItems in array layout props
         schema,
         data: {},
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1082,7 +1071,6 @@ test('mapStateToArrayLayoutProps - should include maxItems in array layout props
         schema,
         data: {},
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1114,7 +1102,6 @@ test('mapStateToLayoutProps should return renderers prop via ownProps', (t) => {
           foo: { firstName: 'Homer' },
         },
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1202,7 +1189,6 @@ test('mapStateToLayoutProps - hidden via state with path from ownProps ', (t) =>
           foo: { firstName: 'Homer' },
         },
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1223,7 +1209,6 @@ test("mapStateToOneOfProps - indexOfFittingSchema should not select schema if en
   const state = {
     jsonforms: {
       core: {
-        ajv: createAjv(),
         schema: {
           type: 'object',
           properties: {
@@ -1303,7 +1288,6 @@ test('mapStateToMultiEnumControlProps - oneOf items', (t) => {
         },
         data: {},
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1341,7 +1325,6 @@ test('mapStateToMultiEnumControlProps - enum items', (t) => {
         },
         data: {},
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1385,7 +1368,6 @@ test('mapStateToMultiEnumControlProps - enum with ref', (t) => {
         },
         data: {},
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1424,10 +1406,9 @@ test('mapDispatchToMultiEnumProps - enum schema - addItem', (t) => {
     uischema,
     schema,
     data,
-    errors: [] as ErrorObject[],
   };
   const [getCore, dispatch] = mockDispatch(initCore);
-  dispatch(init(data, schema, uischema, createAjv({ useDefaults: true })));
+  dispatch(init(data, schema, uischema));
   const props = mapDispatchToMultiEnumProps(dispatch);
   props.addItem('colors', 'pink');
 
@@ -1459,10 +1440,9 @@ test('mapDispatchToMultiEnumProps - enum schema - removeItem', (t) => {
     uischema,
     schema,
     data,
-    errors: [] as ErrorObject[],
   };
   const [getCore, dispatch] = mockDispatch(initCore);
-  dispatch(init(data, schema, uischema, createAjv({ useDefaults: true })));
+  dispatch(init(data, schema, uischema));
   const props = mapDispatchToMultiEnumProps(dispatch);
   props.removeItem('colors', 'red');
 
@@ -1500,10 +1480,9 @@ test('mapDispatchToMultiEnumProps - oneOf schema - addItem', (t) => {
     uischema,
     schema,
     data,
-    errors: [] as ErrorObject[],
   };
   const [getCore, dispatch] = mockDispatch(initCore);
-  dispatch(init(data, schema, uischema, createAjv({ useDefaults: true })));
+  dispatch(init(data, schema, uischema));
   const props = mapDispatchToMultiEnumProps(dispatch);
   props.addItem('colors', 'pink');
 
@@ -1541,10 +1520,9 @@ test('mapDispatchToMultiEnumProps - oneOf schema - removeItem', (t) => {
     uischema,
     schema,
     data,
-    errors: [] as ErrorObject[],
   };
   const [getCore, dispatch] = mockDispatch(initCore);
-  dispatch(init(data, schema, uischema, createAjv({ useDefaults: true })));
+  dispatch(init(data, schema, uischema));
   const props = mapDispatchToMultiEnumProps(dispatch);
   props.removeItem('colors', 'pink');
 
@@ -1579,13 +1557,12 @@ test('should assign defaults to enum', (t) => {
         uischema,
         schema,
         data,
-        errors: [] as ErrorObject[],
       },
     },
   };
   const newCore = coreReducer(
     initState.jsonforms.core,
-    init(data, schema, uischema, createAjv({ useDefaults: true }))
+    init(data, schema, uischema)
   );
   t.is(newCore.data.color, 'green');
 });
@@ -1617,14 +1594,13 @@ test('should assign defaults to empty item within nested object of an array', (t
         uischema,
         schema,
         data,
-        errors: [] as ErrorObject[],
       },
     },
   };
 
   const newCore = coreReducer(
     initState.jsonforms.core,
-    init(data, schema, uischema, createAjv({ useDefaults: true }))
+    init(data, schema, uischema)
   );
   t.is(newCore.data.length, 1);
   t.deepEqual(newCore.data[0], { message: 'foo' });
@@ -1655,10 +1631,9 @@ test('should assign defaults to newly added item within nested object of an arra
     uischema,
     schema,
     data,
-    errors: [] as ErrorObject[],
   };
   const [getCore, dispatch] = mockDispatch(initCore);
-  dispatch(init(data, schema, uischema, createAjv({ useDefaults: true })));
+  dispatch(init(data, schema, uischema));
   const props = mapDispatchToArrayControlProps(dispatch);
   props.addItem('', createDefaultValue(schema, schema))();
 
@@ -1727,13 +1702,11 @@ test('mapStateToAnyOfProps - const constraint in anyOf schema should return corr
   const state = {
     jsonforms: {
       core: {
-        ajv: createAjv(),
         schema,
         data: {
           foo: { type: 'type3' },
         },
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };
@@ -1874,8 +1847,7 @@ test('mapStateToControlProps - i18n errors - should not crash without i18n', (t)
     init(
       state.jsonforms.core.data,
       state.jsonforms.core.schema,
-      state.jsonforms.core.uischema,
-      createAjv()
+      state.jsonforms.core.uischema
     )
   );
   state.jsonforms.i18n = undefined;
@@ -1895,8 +1867,7 @@ test('mapStateToControlProps - i18n errors - default translation has no effect',
     init(
       state.jsonforms.core.data,
       state.jsonforms.core.schema,
-      state.jsonforms.core.uischema,
-      createAjv()
+      state.jsonforms.core.uischema
     )
   );
   state.jsonforms.i18n = defaultJsonFormsI18nState;
@@ -1916,8 +1887,7 @@ test('mapStateToControlProps - i18n errors - translate via error message key', (
     init(
       state.jsonforms.core.data,
       state.jsonforms.core.schema,
-      state.jsonforms.core.uischema,
-      createAjv()
+      state.jsonforms.core.uischema
     )
   );
   state.jsonforms.i18n = defaultJsonFormsI18nState;
@@ -1950,8 +1920,7 @@ test('mapStateToControlProps - i18n errors - translate via i18 specialized error
     init(
       state.jsonforms.core.data,
       state.jsonforms.core.schema,
-      state.jsonforms.core.uischema,
-      createAjv()
+      state.jsonforms.core.uischema
     )
   );
   state.jsonforms.i18n = defaultJsonFormsI18nState;
@@ -1984,8 +1953,7 @@ test('mapStateToControlProps - i18n errors - translate via i18 general error key
     init(
       state.jsonforms.core.data,
       state.jsonforms.core.schema,
-      state.jsonforms.core.uischema,
-      createAjv()
+      state.jsonforms.core.uischema
     )
   );
   state.jsonforms.i18n = defaultJsonFormsI18nState;
@@ -2018,8 +1986,7 @@ test('mapStateToControlProps - i18n errors - specialized keyword wins over gener
     init(
       state.jsonforms.core.data,
       state.jsonforms.core.schema,
-      state.jsonforms.core.uischema,
-      createAjv()
+      state.jsonforms.core.uischema
     )
   );
   state.jsonforms.i18n = defaultJsonFormsI18nState;
@@ -2055,8 +2022,7 @@ test('mapStateToControlProps - i18n errors - multiple errors customization', (t)
     init(
       state.jsonforms.core.data,
       state.jsonforms.core.schema,
-      state.jsonforms.core.uischema,
-      createAjv()
+      state.jsonforms.core.uischema
     )
   );
   state.jsonforms.i18n = defaultJsonFormsI18nState;
@@ -2092,8 +2058,7 @@ test('mapStateToControlProps - i18n errors - custom keyword wins over all other 
     init(
       state.jsonforms.core.data,
       state.jsonforms.core.schema,
-      state.jsonforms.core.uischema,
-      createAjv()
+      state.jsonforms.core.uischema
     )
   );
   state.jsonforms.i18n = defaultJsonFormsI18nState;
@@ -2141,7 +2106,6 @@ test('mapStateToControlProps - required is calculated correctly from encoded JSO
         schema,
         data: {},
         uischema,
-        errors: [] as ErrorObject[],
       },
     },
   };

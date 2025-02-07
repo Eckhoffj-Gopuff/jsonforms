@@ -25,17 +25,16 @@
 import test from 'ava';
 import * as _ from 'lodash';
 import * as Redux from 'redux';
-import { clearAllIds, createAjv, validate } from '../../src/util';
-import { UPDATE_DATA, UpdateAction } from '../../src/actions';
 import configureStore from 'redux-mock-store';
-import { JsonFormsState } from '../../src/store';
 import {
+  clearAllIds,
+  UPDATE_DATA,
+  UpdateAction,
+  JsonFormsState,
   ControlElement,
   JsonSchema,
   RuleEffect,
   UISchemaElement,
-} from '../../src/models';
-import {
   DispatchPropsOfCell,
   defaultMapDispatchToControlProps,
   defaultMapStateToEnumCellProps,
@@ -43,7 +42,8 @@ import {
   mapStateToCellProps,
   mapStateToOneOfEnumCellProps,
   oneOfToEnumOptionMapper,
-} from '../../src/mappers';
+} from '../../src';
+
 const middlewares: Redux.Middleware[] = [];
 const mockStore = configureStore<JsonFormsState>(middlewares);
 
@@ -287,9 +287,6 @@ test('mapStateToCellProps - translated error', (t) => {
   // mark firstName as required, delete the value from data, then get errors from ajv from the compiled schema
   schema.required = ['firstName'];
   delete data.firstName;
-  const ajv = createAjv();
-  const v = ajv.compile(schema);
-  state.jsonforms.core.errors = validate(v, data);
   // add a mock i18n state to verify that the error gets translated
   state.jsonforms.i18n = {
     translateError: (error) => `i18n-error:${error.keyword}`,
