@@ -30,7 +30,6 @@ import find from 'lodash/find';
 import { resolveData, resolveSchema } from './resolvers';
 import { composePaths, toDataPathSegments } from './path';
 import { isEnabled, isVisible } from './runtime';
-import type Ajv from 'ajv';
 import type { JsonSchema, Scoped, UISchemaElement } from '../models';
 
 /**
@@ -163,10 +162,10 @@ export const Paths = {
 
 // Runtime --
 export const Runtime = {
-  isEnabled(uischema: UISchemaElement, data: any, ajv: Ajv): boolean {
-    return isEnabled(uischema, data, undefined, ajv);
+  isEnabled(uischema: UISchemaElement, data: any): boolean {
+    return isEnabled(uischema, data, undefined);
   },
-  isVisible(uischema: UISchemaElement, data: any, ajv: Ajv): boolean {
-    return isVisible(uischema, data, undefined, ajv);
+  isVisible(uischema: UISchemaElement, data: any): boolean {
+    return isVisible(uischema, data, undefined);
   },
 };

@@ -1,5 +1,5 @@
 import { JsonSchema, UISchemaElement } from '../models';
-import { JsonFormsState, getAjv } from '../store';
+import { JsonFormsState } from '../store';
 import { hasEnableRule, isEnabled } from '../util';
 
 /**
@@ -19,7 +19,7 @@ export const isInherentlyEnabled = (
     return false;
   }
   if (uischema && hasEnableRule(uischema)) {
-    return isEnabled(uischema, rootData, ownProps?.path, getAjv(state));
+    return isEnabled(uischema, rootData, ownProps?.path);
   }
   if (typeof uischema?.options?.readonly === 'boolean') {
     return !uischema.options.readonly;
