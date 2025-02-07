@@ -4,14 +4,10 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 const packageJson = require('./package.json');
 
-const baseConfig = {
-  input: 'src/index.ts',
-  external: [...Object.keys(packageJson.dependencies), /^lodash\/.*/],
-};
-
 export default [
   {
-    ...baseConfig,
+    input: 'src/index.ts',
+    external: [...Object.keys(packageJson.dependencies), /^lodash\/.*/],
     output: {
       file: packageJson.module,
       format: 'esm',
@@ -21,24 +17,6 @@ export default [
       typescript(),
       cleanup({ extensions: ['js', 'ts', 'jsx', 'tsx'] }),
       visualizer({ open: false }),
-    ],
-  },
-  {
-    ...baseConfig,
-    output: {
-      file: packageJson.main,
-      format: 'cjs',
-      sourcemap: true,
-    },
-    plugins: [
-      typescript({
-        tsconfigOverride: {
-          compilerOptions: {
-            target: 'ES5',
-          },
-        },
-      }),
-      cleanup({ extensions: ['js', 'ts', 'jsx', 'tsx'] }),
     ],
   },
 ];
