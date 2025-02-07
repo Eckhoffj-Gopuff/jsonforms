@@ -24,7 +24,6 @@
 */
 
 import {
-  createAjv,
   JsonFormsCore,
   JsonSchema,
   TesterContext,
@@ -39,15 +38,15 @@ export const initCore = (
   uischema: UISchemaElement,
   data?: any
 ): JsonFormsCore => {
-  return { schema, uischema, data, ajv: createAjv() };
+  return { schema, uischema, data };
 };
 
 export const TestEmitter: React.FC<JsonFormsReactProps> = ({ onChange }) => {
   const ctx = useJsonForms();
-  const { data, errors } = ctx.core;
+  const { data } = ctx.core;
   React.useEffect(() => {
-    onChange({ data, errors });
-  }, [data, errors]);
+    onChange({ data });
+  }, [data]);
   return null;
 };
 

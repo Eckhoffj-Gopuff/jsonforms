@@ -38,7 +38,6 @@ import type {
   UISchemaElement,
 } from '@jsonforms/core';
 import {
-  createAjv,
   jsonFormsReducerConfig,
   NOT_APPLICABLE,
   rankWith,
@@ -50,20 +49,18 @@ import {
 } from '@jsonforms/core';
 import { isEqual } from 'lodash';
 import Enzyme, { mount, shallow } from 'enzyme';
-import type { StatelessRenderer } from '../../src/Renderer';
+import type { StatelessRenderer } from '../../src';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import {
   JsonForms,
   JsonFormsDispatch,
   JsonFormsDispatchRenderer,
-} from '../../src/JsonForms';
-import {
   JsonFormsStateProvider,
   useJsonForms,
   withJsonFormsControlProps,
-} from '../../src/JsonFormsContext';
+  DispatchCell,
+} from '../../src';
 import { JsonFormsReduxContext } from '../../src/redux';
-import { DispatchCell } from '../../src/DispatchCell';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -600,14 +597,10 @@ test('JsonForms should support two isolated components', () => {
     },
   };
   const customRenderer1 = () => {
-    const ctx = useJsonForms();
-    const errors = ctx.core.errors;
-    return <h1>{errors ? errors.length : 0}</h1>;
+    return <h1>{0}</h1>;
   };
   const customRenderer2 = () => {
-    const ctx = useJsonForms();
-    const errors = ctx.core.errors;
-    return <h2>{errors ? errors.length : 0}</h2>;
+    return <h2>{0}</h2>;
   };
   const fooControl: ControlElement = {
     type: 'Control',
@@ -650,14 +643,11 @@ test('JsonForms should create a JsonFormsStateProvider with initState props', ()
     },
   ];
 
-  const ajv = createAjv();
-
   const wrapper = mount(
     <JsonForms
       data={fixture.data}
       uischema={fixture.uischema}
       schema={fixture.schema}
-      ajv={ajv}
       renderers={renderers}
     />
   );
@@ -670,7 +660,6 @@ test('JsonForms should create a JsonFormsStateProvider with initState props', ()
     fixture.uischema
   );
   expect(jsonFormsStateProviderInitStateProp.core.schema).toBe(fixture.schema);
-  expect(jsonFormsStateProviderInitStateProp.core.ajv).toBe(ajv);
 
   expect(jsonFormsStateProviderInitStateProp.renderers).toBe(renderers);
 });

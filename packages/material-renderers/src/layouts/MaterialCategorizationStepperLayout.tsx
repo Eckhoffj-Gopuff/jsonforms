@@ -43,12 +43,7 @@ import {
   withJsonFormsLayoutProps,
   withTranslateProps,
 } from '@jsonforms/react';
-import {
-  AjvProps,
-  MaterialLayoutRenderer,
-  MaterialLayoutRendererProps,
-  withAjvProps,
-} from '../util/layout';
+import { MaterialLayoutRenderer, MaterialLayoutRendererProps } from '../util';
 
 export const materialCategorizationStepperTester: RankedTester = rankWith(
   2,
@@ -65,7 +60,6 @@ export interface CategorizationStepperState {
 
 export interface MaterialCategorizationStepperLayoutRendererProps
   extends StatePropsOfLayout,
-    AjvProps,
     TranslateProps {
   data: any;
 }
@@ -79,18 +73,8 @@ export const MaterialCategorizationStepperLayoutRenderer = (
     setActiveCategory(step);
   };
 
-  const {
-    data,
-    path,
-    renderers,
-    schema,
-    uischema,
-    visible,
-    cells,
-    config,
-    ajv,
-    t,
-  } = props;
+  const { data, path, renderers, schema, uischema, visible, cells, config, t } =
+    props;
   const categorization = uischema as Categorization;
   const appliedUiSchemaOptions = merge({}, config, uischema.options);
   const buttonWrapperStyle = {
@@ -107,9 +91,9 @@ export const MaterialCategorizationStepperLayoutRenderer = (
   const categories = useMemo(
     () =>
       categorization.elements.filter((category: Category) =>
-        isVisible(category, data, undefined, ajv)
+        isVisible(category, data, undefined)
       ),
-    [categorization, data, ajv]
+    [categorization, data]
   );
   const childProps: MaterialLayoutRendererProps = {
     elements: categories[activeCategory].elements,
@@ -170,8 +154,6 @@ export const MaterialCategorizationStepperLayoutRenderer = (
   );
 };
 
-export default withAjvProps(
-  withTranslateProps(
-    withJsonFormsLayoutProps(MaterialCategorizationStepperLayoutRenderer)
-  )
+export default withTranslateProps(
+  withJsonFormsLayoutProps(MaterialCategorizationStepperLayoutRenderer)
 );
